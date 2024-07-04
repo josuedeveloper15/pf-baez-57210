@@ -1,0 +1,37 @@
+<div
+  style="
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: azure;
+  "
+>
+  <mat-card style="max-width: 400px">
+    <mat-card-header><h1>Iniciar sesion</h1></mat-card-header>
+
+    <mat-card-content>
+      <form>
+        <mat-form-field class="w-full mb-3" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput />
+          <mat-hint>Debe ingresar un correo electronico valido</mat-hint>
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+        <mat-form-field class="w-full mb-3" appearance="fill">
+          <mat-label>Contrasena</mat-label>
+          <input matInput />
+          <mat-icon matSuffix>key</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="w-full">
+          <mat-label>Rol</mat-label>
+          <mat-select>
+            <mat-option value="ADMIN">ADMIN</mat-option>
+            <mat-option value="USER">USER</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
