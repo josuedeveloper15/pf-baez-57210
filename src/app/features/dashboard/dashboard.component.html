@@ -1,13 +1,12 @@
 <mat-drawer-container class="example-container" autosize>
   <!-- SIDEBAR INICIO -->
   <mat-drawer #drawer class="example-sidenav" mode="side">
-    <p>Auto-resizing sidenav</p>
-    @if (showFiller) {
-    <p>Lorem, ipsum dolor sit amet consectetur.</p>
-    }
-    <button (click)="showFiller = !showFiller" mat-raised-button>
-      Toggle extra text
-    </button>
+    <mat-nav-list>
+      <a mat-list-item href="...">Inicio</a>
+      <a mat-list-item href="...">Cursos</a>
+      <a mat-list-item href="...">Alumnos</a>
+      <a mat-list-item href="...">Inscripciones</a>
+    </mat-nav-list>
   </mat-drawer>
   <!-- SIDEBAR FIN -->
 

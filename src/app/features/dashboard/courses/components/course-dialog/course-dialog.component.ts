@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -15,13 +15,13 @@ export class CourseDialogComponent {
     private matDialogRef: MatDialogRef<CourseDialogComponent>
   ) {
     this.courseForm = this.fb.group({
-      name: [],
+      name: [null, Validators.required],
+      startDate: [],
+      endDate: [],
     });
   }
 
   onSubmit(): void {
-    console.log(this.courseForm.value);
-
     this.matDialogRef.close(this.courseForm.value);
   }
 }

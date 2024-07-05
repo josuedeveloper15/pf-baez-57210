@@ -10,7 +10,7 @@ import { CourseDialogComponent } from './components/course-dialog/course-dialog.
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
 @NgModule({
   declarations: [CoursesComponent, CourseDialogComponent],
   exports: [CoursesComponent],
@@ -23,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
+    MatDatepickerModule,
   ],
 })
 export class CoursesModule {}
