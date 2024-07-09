@@ -1,4 +1,6 @@
-<h2 mat-dialog-title>Crear curso</h2>
+<h2 mat-dialog-title>
+  {{ editingCourse ? "Editando " + editingCourse.name : "Crear curso" }}
+</h2>
 
 <mat-dialog-content>
   <form [formGroup]="courseForm">

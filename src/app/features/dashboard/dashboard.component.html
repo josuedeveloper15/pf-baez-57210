@@ -1,6 +1,6 @@
 <mat-drawer-container class="example-container" autosize>
   <!-- SIDEBAR INICIO -->
-  <mat-drawer #drawer class="example-sidenav" mode="side">
+  <mat-drawer [opened]="true" #drawer class="example-sidenav" mode="side">
     <mat-nav-list>
       <a mat-list-item href="...">Inicio</a>
       <a mat-list-item href="...">Cursos</a>
@@ -49,6 +49,7 @@
 
     <main class="p-5">
       <app-courses />
+      <!-- <app-clase-pipes /> -->
     </main>
 
     <!-- <h2>Tarjetas</h2>

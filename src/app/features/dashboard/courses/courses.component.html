@@ -3,3 +3,56 @@
 </button>
 
 <p>El nombre del curso creado es: {{ nombreCurso }}</p>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <!-- ENCABEZADO -->
+    <th mat-header-cell *matHeaderCellDef>#</th>
+    <!-- DATOS -->
+    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Nombre</th>
+    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="startDate">
+    <th mat-header-cell *matHeaderCellDef>Fecha de inicio</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.startDate | date : "dd/MM/YYYY" }}
+    </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="endDate">
+    <th mat-header-cell *matHeaderCellDef>Fecha de fin</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.endDate | date : "dd/MM/YYYY" }}
+    </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Acciones</th>
+    <td mat-cell *matCellDef="let element">
+      <button (click)="editCourse(element)" mat-icon-button>
+        <mat-icon>edit</mat-icon>
+      </button>
+
+      <button (click)="deleteCourseById(element.id)" mat-icon-button>
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <!-- DEFINIR QUE COLUMNAS SE VAN A MOSTAR EN LA TABLA -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

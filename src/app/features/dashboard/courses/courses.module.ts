@@ -11,6 +11,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+
+import { MatTableModule } from '@angular/material/table';
+
 @NgModule({
   declarations: [CoursesComponent, CourseDialogComponent],
   exports: [CoursesComponent],
@@ -24,6 +27,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatInputModule,
     ReactiveFormsModule,
     MatDatepickerModule,
+    MatTableModule,
   ],
 })
 export class CoursesModule {}

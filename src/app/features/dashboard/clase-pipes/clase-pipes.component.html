@@ -1,0 +1,5 @@
+<p>{{ "clase-pipes works!" | reverse }}</p>
+
+<p *appRepetir="2" appResaltado color="green">
+  {{ "Lorem, ipsum dolor sit" | reverse : "lowercase" : 3 : false }}
+</p>
