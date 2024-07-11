@@ -11,26 +11,27 @@
     <mat-card-header><h1>Iniciar sesion</h1></mat-card-header>
 
     <mat-card-content>
-      <form>
-        <mat-form-field class="w-full mb-3" appearance="fill">
+      <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+        <mat-form-field class="w-full mb-3">
           <mat-label>Email</mat-label>
-          <input matInput />
+          <input formControlName="email" matInput />
           <mat-hint>Debe ingresar un correo electronico valido</mat-hint>
           <mat-icon matSuffix>email</mat-icon>
         </mat-form-field>
-        <mat-form-field class="w-full mb-3" appearance="fill">
+        <mat-form-field class="w-full mb-3">
           <mat-label>Contrasena</mat-label>
-          <input matInput />
+          <input formControlName="password" matInput />
           <mat-icon matSuffix>key</mat-icon>
         </mat-form-field>
 
         <mat-form-field class="w-full">
           <mat-label>Rol</mat-label>
-          <mat-select>
+          <mat-select formControlName="role">
             <mat-option value="ADMIN">ADMIN</mat-option>
             <mat-option value="USER">USER</mat-option>
           </mat-select>
         </mat-form-field>
+        <button class="w-full mt-5" mat-flat-button>Iniciar sesion</button>
       </form>
     </mat-card-content>
   </mat-card>

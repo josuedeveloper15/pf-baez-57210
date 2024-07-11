@@ -6,7 +6,9 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   constructor() {}
 
-  login() {}
+  login() {
+    console.log('EJECUTANDO LOGIN REAL');
+  }
 
   verificarToken() {}
 
