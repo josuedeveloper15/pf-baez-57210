@@ -18,8 +18,8 @@ export class LoginComponent {
   ) {
     console.log('appConfig', appConfig);
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
+      email: ['test@mail.com', [Validators.required, Validators.email]],
+      password: ['123456', [Validators.required]],
       role: ['ADMIN', [Validators.required]],
     });
   }

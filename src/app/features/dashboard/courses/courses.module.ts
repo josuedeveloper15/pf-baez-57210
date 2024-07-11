@@ -11,7 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
@@ -28,6 +28,7 @@ import { MatTableModule } from '@angular/material/table';
     ReactiveFormsModule,
     MatDatepickerModule,
     MatTableModule,
+    MatProgressSpinnerModule,
   ],
 })
 export class CoursesModule {}
