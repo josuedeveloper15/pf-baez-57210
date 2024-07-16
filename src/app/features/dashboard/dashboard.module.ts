@@ -11,6 +11,7 @@ import { MatCardModule } from '@angular/material/card';
 import { CoursesModule } from './courses/courses.module';
 import { MatListModule } from '@angular/material/list';
 import { ClasePipesModule } from './clase-pipes/clase-pipes.module';
+import { Clase10RxjsModule } from './clase-10-rxjs/clase-10-rxjs.module';
 
 @NgModule({
   declarations: [DashboardComponent],
@@ -26,6 +27,7 @@ import { ClasePipesModule } from './clase-pipes/clase-pipes.module';
     CoursesModule,
     MatListModule,
     ClasePipesModule,
+    Clase10RxjsModule,
   ],
 })
 export class DashboardModule {}

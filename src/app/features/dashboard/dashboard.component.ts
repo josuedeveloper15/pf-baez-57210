@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
   showFiller = false;
+
+  mostrarClase10 = true;
 }

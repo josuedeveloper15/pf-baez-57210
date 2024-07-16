@@ -48,7 +48,9 @@
     <!-- TOOLBAR FIN -->
 
     <main class="p-5">
-      <app-courses />
+      <button (click)="mostrarClase10 = !mostrarClase10">Alternar vista</button>
+      <app-clase-10-rxjs *ngIf="mostrarClase10" />
+      <!-- <app-courses /> -->
       <!-- <app-clase-pipes /> -->
     </main>
 
