@@ -1,0 +1,12 @@
+<h1>Inscripciones</h1>
+<hr />
+
+@if (isLoading) {
+<p>Cargando....</p>
+} @else {
+
+<button (click)="addEnrollment()">+</button>
+
+<pre>{{ enrollments | json }}</pre>
+
+}

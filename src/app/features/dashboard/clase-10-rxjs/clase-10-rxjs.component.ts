@@ -3,6 +3,7 @@ import {
   delay,
   filter,
   first,
+  forkJoin,
   interval,
   map,
   Observable,
@@ -10,6 +11,7 @@ import {
   skip,
   Subscription,
   take,
+  tap,
 } from 'rxjs';
 import { CoursesService } from '../../../core/services/courses.service';
 import { Course } from '../courses/models';
@@ -42,7 +44,15 @@ export class Clase10RxjsComponent implements OnDestroy {
 
   valorContador = 0;
 
+  loading = false;
   cursos$: Observable<Course[]>;
+
+  profesores$: Observable<string[]> = of(['Martin', 'Mariana', 'Jhoana']).pipe(
+    delay(3000)
+  );
+
+  profesores: string[] = [];
+  cursos: Course[] = [];
 
   constructor(private coursesService: CoursesService) {
     this.cursos$ = coursesService.getCourses();
@@ -51,6 +61,16 @@ export class Clase10RxjsComponent implements OnDestroy {
       next: (v) => console.log(v),
     });
 
+    this.loading = true;
+    forkJoin([this.cursos$, this.profesores$]).subscribe({
+      next: (resultados) => {
+        this.profesores = resultados[1];
+        this.cursos = resultados[0];
+      },
+      complete: () => {
+        this.loading = false;
+      },
+    });
     // this.myRandomNumberSubscription = this.myInterval$
     //   .pipe(
     //     // take(20),
@@ -58,7 +78,9 @@ export class Clase10RxjsComponent implements OnDestroy {
     //     // skip(1),
     //     // first()
     //     // take(1)
-    //     map((valor) => valor * 2)
+    //     tap((valor) => console.log('Valor antes del map: ', valor)),
+    //     map((valor) => valor * 2),
+    //     tap((valor) => console.log('Valor despues del map: ', valor))
     //   )
     //   .subscribe({
     //     // Es cuando recibimos un valor (sin error)

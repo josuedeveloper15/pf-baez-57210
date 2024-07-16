@@ -37,7 +37,7 @@ export class CoursesService {
       setTimeout(() => {
         observer.next(this.MY_DATABASE);
         observer.complete();
-      }, 500);
+      }, 2000);
     });
   }
 
