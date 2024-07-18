@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor() {}
+  constructor(private router: Router) {}
 
-  login() {}
+  login() {
+    localStorage.setItem('token', 'lksfdjglfdkgjklfdkjgldfjisdhfjsdfsdk');
+    this.router.navigate(['dashboard', 'courses']);
+  }
 
   // async login() {
   //   // console.log('EJECUTANDO LOGIN REAL');

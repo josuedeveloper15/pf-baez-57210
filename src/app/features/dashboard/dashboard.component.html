@@ -1,8 +1,23 @@
 <mat-drawer-container class="example-container" autosize>
   <!-- SIDEBAR INICIO -->
   <mat-drawer [opened]="true" #drawer class="example-sidenav" mode="side">
+    <!--
+      Parametros de URL
+      /dashboard/students
+
+      Parametros de consulta
+      /dashboard/students?id=dkjsajaSDKS&search=video%20%gatitos&
+    -->
+
     <mat-nav-list>
-      <a mat-list-item>Inicio</a>
+      <a
+        mat-list-item
+        routerLink="home"
+        routerLinkActive
+        #homeLink="routerLinkActive"
+        [activated]="homeLink.isActive"
+        >Inicio</a
+      >
       <a
         mat-list-item
         routerLink="courses"

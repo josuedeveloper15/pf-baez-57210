@@ -13,9 +13,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
+import { CourseDetailComponent } from './pages/course-detail/course-detail.component';
 
 @NgModule({
-  declarations: [CoursesComponent, CourseDialogComponent],
+  declarations: [CoursesComponent, CourseDialogComponent, CourseDetailComponent],
   exports: [CoursesComponent],
   imports: [
     CommonModule,

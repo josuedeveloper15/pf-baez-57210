@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Course } from '../../features/dashboard/courses/models';
 
 @Injectable({ providedIn: 'root' })
@@ -37,8 +37,14 @@ export class CoursesService {
       setTimeout(() => {
         observer.next(this.MY_DATABASE);
         observer.complete();
-      }, 2000);
+      }, 500);
     });
+  }
+
+  getCourseById(id: string): Observable<Course | undefined> {
+    return this.getCourses().pipe(
+      map((todosLosCursos) => todosLosCursos.find((el) => el.id === id))
+    );
   }
 
   addCourse(course: Course): Observable<Course[]> {
