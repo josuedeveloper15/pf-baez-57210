@@ -32,6 +32,16 @@ export class CoursesService {
     return this.getCourses();
   }
 
+  searchCoursesByName(search: string): Observable<Course[]> {
+    return this.getCourses().pipe(
+      map((todosCursos) =>
+        todosCursos.filter((curso) =>
+          curso.name.toLowerCase().includes(search.toLowerCase())
+        )
+      )
+    );
+  }
+
   getCourses(): Observable<Course[]> {
     return new Observable((observer) => {
       setTimeout(() => {

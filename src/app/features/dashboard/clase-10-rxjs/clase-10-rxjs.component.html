@@ -1,3 +1,8 @@
+<mat-form-field>
+  <input [formControl]="searchControl" matInput />
+  <mat-icon matSuffix>search</mat-icon>
+</mat-form-field>
+
 @if (loading) {
 <p>Cargando....</p>
 } @else {

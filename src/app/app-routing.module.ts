@@ -6,6 +6,7 @@ import { CoursesComponent } from './features/dashboard/courses/courses.component
 import { EnrollmentsComponent } from './features/dashboard/enrollments/enrollments.component';
 import { CourseDetailComponent } from './features/dashboard/courses/pages/course-detail/course-detail.component';
 import { HomeComponent } from './features/dashboard/home/home.component';
+import { Clase10RxjsComponent } from './features/dashboard/clase-10-rxjs/clase-10-rxjs.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,10 @@ const routes: Routes = [
       {
         path: 'home',
         component: HomeComponent,
+      },
+      {
+        path: 'rxjs',
+        component: Clase10RxjsComponent,
       },
       {
         // /dashboard/courses
