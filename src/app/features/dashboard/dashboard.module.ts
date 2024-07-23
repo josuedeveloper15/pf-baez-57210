@@ -13,6 +13,7 @@ import { MatListModule } from '@angular/material/list';
 import { ClasePipesModule } from './clase-pipes/clase-pipes.module';
 import { Clase10RxjsModule } from './clase-10-rxjs/clase-10-rxjs.module';
 import { EnrollmentsModule } from './enrollments/enrollments.module';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [DashboardComponent],
@@ -20,11 +21,7 @@ import { EnrollmentsModule } from './enrollments/enrollments.module';
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatCardModule,
+    SharedModule,
     CoursesModule,
     MatListModule,
     ClasePipesModule,

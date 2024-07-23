@@ -7,6 +7,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [ReversePipe, ResaltadoDirective, RepetirDirective],
@@ -15,10 +19,16 @@ import { MatIconModule } from '@angular/material/icon';
     ReversePipe,
     ResaltadoDirective,
     RepetirDirective,
+
+    // Tambien podemos exportar otros modulos desde aqui...
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
     ReactiveFormsModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatCardModule,
   ],
 })
 export class SharedModule {}
