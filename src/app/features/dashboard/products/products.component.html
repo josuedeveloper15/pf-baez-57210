@@ -1,0 +1,65 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="productForm">
+  <div class="grid w-6">
+    <div class="col-6">
+      <mat-form-field class="w-full">
+        <mat-label>Nombre</mat-label>
+        <input formControlName="name" matInput />
+      </mat-form-field>
+    </div>
+    <div class="col-6">
+      <mat-form-field class="w-full">
+        <mat-label>Precio</mat-label>
+        <input formControlName="price" matInput />
+      </mat-form-field>
+    </div>
+  </div>
+  <button type="submit" mat-flat-button>
+    {{ editingProduct ? "Editando" : "Crear" }}
+  </button>
+</form>
+
+@if (loading ) {
+<p>Cargando...</p>
+} @else {
+<!-- <pre>{{ products | json }}</pre> -->
+
+<table mat-table [dataSource]="products" class="mat-elevation-z8">
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>No.</th>
+    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef>Weight</th>
+    <td mat-cell *matCellDef="let element">{{ element.price }}</td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Weight</th>
+    <td mat-cell *matCellDef="let element">
+      <button (click)="onDelete(element.id)" mat-icon-button>
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button (click)="onEdit(element)" mat-icon-button>
+        <mat-icon>edit</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+
+}

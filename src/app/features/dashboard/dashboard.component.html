@@ -35,6 +35,14 @@
         [activated]="inscripcionesLink.isActive"
         >Inscripciones</a
       >
+      <a
+        mat-list-item
+        routerLink="products"
+        routerLinkActive
+        #productosLink="routerLinkActive"
+        [activated]="productosLink.isActive"
+        >Productos</a
+      >
       <a mat-list-item routerLink="/auth">Cerrar sesion</a>
     </mat-nav-list>
   </mat-drawer>

@@ -9,6 +9,7 @@ import { AuthModule } from './features/auth/auth.module';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { CoreModule } from './core/core.module';
+import { ProductsModule } from './features/dashboard/products/products.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +19,7 @@ import { CoreModule } from './core/core.module';
     DashboardModule,
     AuthModule,
     CoreModule,
+    ProductsModule,
   ],
   providers: [provideAnimationsAsync(), provideNativeDateAdapter()],
   bootstrap: [AppComponent],
