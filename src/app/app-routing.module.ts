@@ -8,6 +8,7 @@ import { CourseDetailComponent } from './features/dashboard/courses/pages/course
 import { HomeComponent } from './features/dashboard/home/home.component';
 import { Clase10RxjsComponent } from './features/dashboard/clase-10-rxjs/clase-10-rxjs.component';
 import { ProductsComponent } from './features/dashboard/products/products.component';
+import { authGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [authGuard],
     loadChildren: () =>
       import('./features/dashboard/dashboard.module').then(
         (m) => m.DashboardModule

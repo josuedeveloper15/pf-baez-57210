@@ -6,6 +6,7 @@ import { Clase10RxjsComponent } from './clase-10-rxjs/clase-10-rxjs.component';
 import { CoursesComponent } from './courses/courses.component';
 import { CourseDetailComponent } from './courses/pages/course-detail/course-detail.component';
 import { EnrollmentsComponent } from './enrollments/enrollments.component';
+import { adminGuard } from '../../core/guards/admin.guard';
 
 const routes: Routes = [
   // Ya sabemos que el path actual es /dashboard
@@ -16,6 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'products',
+    canActivate: [adminGuard],
     loadChildren: () =>
       import('./products/products.module').then((m) => m.ProductsModule),
     // component: ProductsComponent,
@@ -27,15 +29,15 @@ const routes: Routes = [
   {
     // /dashboard/courses
     path: 'courses',
-    component: CoursesComponent,
-  },
-  {
-    path: 'courses/:id',
-    component: CourseDetailComponent,
+    loadChildren: () =>
+      import('./courses/courses.module').then((m) => m.CoursesModule),
   },
   {
     path: 'enrollments',
-    component: EnrollmentsComponent,
+    loadChildren: () =>
+      import('./enrollments/enrollments.module').then(
+        (m) => m.EnrollmentsModule
+      ),
   },
   {
     path: '**', // Cualquier ruta que no coincida con las anteriores (basicmanete es un default)

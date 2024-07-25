@@ -36,6 +36,7 @@
         >Inscripciones</a
       >
       <a
+        *ngIf="(authUser$ | async)?.role === 'ADMIN'"
         mat-list-item
         routerLink="products"
         routerLinkActive
@@ -43,8 +44,10 @@
         [activated]="productosLink.isActive"
         >Productos</a
       >
-      <a mat-list-item routerLink="/auth">Cerrar sesion</a>
+      <a (click)="logout()" mat-list-item>Cerrar sesion</a>
     </mat-nav-list>
+
+    {{ authUser$ | async | json }}
   </mat-drawer>
   <!-- SIDEBAR FIN -->
 
