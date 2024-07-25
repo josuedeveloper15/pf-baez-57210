@@ -13,14 +13,7 @@ import { ProductsModule } from './features/dashboard/products/products.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    DashboardModule,
-    AuthModule,
-    CoreModule,
-    ProductsModule,
-  ],
+  imports: [BrowserModule, AppRoutingModule, CoreModule],
   providers: [provideAnimationsAsync(), provideNativeDateAdapter()],
   bootstrap: [AppComponent],
 })

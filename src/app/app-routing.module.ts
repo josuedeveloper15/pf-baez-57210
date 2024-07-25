@@ -12,42 +12,19 @@ import { ProductsComponent } from './features/dashboard/products/products.compon
 const routes: Routes = [
   {
     path: 'auth',
-    component: LoginComponent,
+    loadChildren: () =>
+      import('./features/auth/auth.module').then(
+        (referenciaAlArchivo) => referenciaAlArchivo.AuthModule
+      ),
+    // component: LoginComponent,
   },
   {
     path: 'dashboard',
     component: DashboardComponent,
-    children: [
-      {
-        path: 'home',
-        component: HomeComponent,
-      },
-      {
-        path: 'products',
-        component: ProductsComponent,
-      },
-      {
-        path: 'rxjs',
-        component: Clase10RxjsComponent,
-      },
-      {
-        // /dashboard/courses
-        path: 'courses',
-        component: CoursesComponent,
-      },
-      {
-        path: 'courses/:id',
-        component: CourseDetailComponent,
-      },
-      {
-        path: 'enrollments',
-        component: EnrollmentsComponent,
-      },
-      {
-        path: '**', // Cualquier ruta que no coincida con las anteriores (basicmanete es un default)
-        redirectTo: '/dashboard/home',
-      },
-    ],
+    loadChildren: () =>
+      import('./features/dashboard/dashboard.module').then(
+        (m) => m.DashboardModule
+      ),
   },
   {
     path: '**', // Cualquier ruta que no coincida con las anteriores (basicmanete es un default)
