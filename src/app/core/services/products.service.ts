@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Product } from '../../features/dashboard/products/models';
 import { delay, Observable, of } from 'rxjs';
 import { generateId } from '../../shared/utils';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -20,26 +22,34 @@ export class ProductsService {
     },
   ];
 
+  constructor(private httpClient: HttpClient) {}
+
   getProducts(): Observable<Product[]> {
-    return of([...this.DATABASE]).pipe(delay(500));
+    return this.httpClient.get<Product[]>(environment.apiUrl + '/produts');
   }
 
   createProduct(product: Product) {
-    product.id = generateId(6);
-    this.DATABASE.push(product);
-    return product;
+    return this.httpClient.post(environment.apiUrl + '/products', product);
   }
 
   editProductById(id: string, update: Partial<Product>) {
-    this.DATABASE = this.DATABASE.map((p) =>
-      p.id === id ? { ...p, ...update } : p
-    );
+    // this.DATABASE = this.DATABASE.map((p) =>
+    //   p.id === id ? { ...p, ...update } : p
+    // );
+    // return id;
+    // const myCustomHeaders = new HttpHeaders({
+    //   'x-access-token': 'aksdjasdjklasjkdaskldmlkas',
+    // });
 
-    return id;
+    return this.httpClient.put(environment.apiUrl + '/products/' + id, update, {
+      // headers: myCustomHeaders,
+      // params: {
+      //   search: 'Mi busqueda',
+      // },
+    });
   }
 
   deleteProductById(id: string) {
-    this.DATABASE = this.DATABASE.filter((p) => p.id !== id);
-    return id;
+    return this.httpClient.delete(environment.apiUrl + '/products/' + id);
   }
 }

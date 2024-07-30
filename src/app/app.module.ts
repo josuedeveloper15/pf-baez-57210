@@ -10,11 +10,17 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { CoreModule } from './core/core.module';
 import { ProductsModule } from './features/dashboard/products/products.module';
+import { provideHttpClient, withFetch } from '@angular/common/http';
+// import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, AppRoutingModule, CoreModule],
-  providers: [provideAnimationsAsync(), provideNativeDateAdapter()],
+  providers: [
+    provideAnimationsAsync(),
+    provideNativeDateAdapter(),
+    provideHttpClient(withFetch()),
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

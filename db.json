@@ -1,0 +1,32 @@
+{
+  "courses": [
+    {
+      "id": "abc123",
+      "name": "Javascript Avanzado",
+      "price": 9999
+    },
+    {
+      "id": "c88c",
+      "name": "Angular",
+      "price": 15000
+    },
+    {
+      "id": "43c9",
+      "name": "Angular",
+      "price": 15000
+    }
+  ],
+  "products": [
+    {
+      "name": "test",
+      "price": "test",
+      "id": "f459"
+    },
+    {
+      "name": "test",
+      "price": "test",
+      "id": "fc6f"
+    }
+  ],
+  "students": []
+}

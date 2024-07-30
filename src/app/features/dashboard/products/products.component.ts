@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from './models';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductsService } from '../../../core/services/products.service';
+import { tap } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-products',
@@ -36,7 +38,13 @@ export class ProductsComponent implements OnInit {
       next: (productsFromDB) => {
         this.products = productsFromDB;
       },
-      error: () => {},
+      error: (error) => {
+        if (error instanceof HttpErrorResponse) {
+          if (error.status === 404) {
+            alert('Productos no encontrados');
+          }
+        }
+      },
       complete: () => {
         this.loading = false;
       },
@@ -49,25 +57,33 @@ export class ProductsComponent implements OnInit {
     } else {
       if (!!this.editingProduct) {
         // esta editando....
-        this.productsService.editProductById(
-          this.editingProduct.id,
-          this.productForm.value
-        );
-        this.editingProduct = null;
+        this.productsService
+          .editProductById(this.editingProduct.id, this.productForm.value)
+          .pipe(
+            tap(() => {
+              this.loadProducts();
+              this.editingProduct = null;
+            })
+          )
+          .subscribe();
       } else {
         // esta creando
-        this.productsService.createProduct(this.productForm.value);
+        this.productsService
+          .createProduct(this.productForm.value)
+          .pipe(tap(() => this.loadProducts()))
+          .subscribe();
       }
 
-      this.loadProducts();
       this.productForm.reset();
     }
   }
 
   onDelete(id: string) {
     if (confirm('Esta seguro?')) {
-      this.productsService.deleteProductById(id);
-      this.loadProducts();
+      this.productsService
+        .deleteProductById(id)
+        .pipe(tap(() => this.loadProducts()))
+        .subscribe();
     }
   }
 
