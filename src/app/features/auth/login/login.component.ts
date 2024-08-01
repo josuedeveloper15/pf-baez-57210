@@ -12,11 +12,10 @@ export class LoginComponent {
   loginForm: FormGroup;
 
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
     private fb: FormBuilder,
     @Inject(APP_CONFIG) private appConfig: any
   ) {
-    console.log('appConfig', appConfig);
     this.loginForm = this.fb.group({
       email: ['test@mail.com', [Validators.required, Validators.email]],
       password: ['123456', [Validators.required]],
