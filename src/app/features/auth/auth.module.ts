@@ -29,12 +29,6 @@ import { APP_CONFIG } from '../../core/injection-tokens';
     ReactiveFormsModule,
   ],
   providers: [
-    AuthService,
-    // {
-    //   provide: AuthService,
-    //   useClass: AuthService,
-    // },
-
     {
       provide: APP_CONFIG,
       useValue: {

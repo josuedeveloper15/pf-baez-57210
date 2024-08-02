@@ -19,7 +19,7 @@ export class DashboardComponent {
   nombreEntorno = environment.envName;
 
   constructor(private authService: AuthService) {
-    this.authUser$ = this.authService.authUser$;
+    this.authUser$ = this.authService.authUser$.pipe(tap(console.log));
   }
 
   logout() {

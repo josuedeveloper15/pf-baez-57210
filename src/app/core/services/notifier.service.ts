@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 export class NotifierService {
   private notify$ = new Subject<string>();
 
-  notify2$ = new Observable();
+  // notify2$ = new Observable();
 
   constructor() {
     this.notify$.subscribe({

@@ -60,16 +60,24 @@
     -->
     <!-- TOOLBAR INICIO -->
     <mat-toolbar color="primary">
-      <button
-        (click)="drawer.toggle()"
-        mat-icon-button
-        class="example-icon"
-        aria-label="Example icon-button with menu icon"
-      >
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span>My App | {{ nombreEntorno }}</span>
-      <span class="example-spacer"></span>
+      <div class="flex justify-content-between w-full align-items-center">
+        <div>
+          <button
+            (click)="drawer.toggle()"
+            mat-icon-button
+            class="example-icon"
+            aria-label="Example icon-button with menu icon"
+          >
+            <mat-icon>menu</mat-icon>
+          </button>
+          <span>My App | {{ nombreEntorno }}</span>
+        </div>
+        @if (authUser$ | async; as user) {
+        <div>
+          {{ user.firstName + " " + user.lastName }}
+        </div>
+        }
+      </div>
     </mat-toolbar>
     <!-- TOOLBAR FIN -->
 

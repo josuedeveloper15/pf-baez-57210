@@ -1,4 +1,24 @@
 {
+  "users": [
+    {
+      "id": "43j9",
+      "firstName": "Josue",
+      "lastName": "Baez",
+      "email": "jbaez@mail.com",
+      "password": "123456",
+      "token": "jfsdk43dsakdjasb4Dsdsa$@#fS",
+      "role": "ADMIN"
+    },
+    {
+      "id": "53j9",
+      "firstName": "Naruto",
+      "lastName": "Uzumaki",
+      "email": "test@mail.com",
+      "password": "123456",
+      "token": "jfsdk43bghkr3db4Dsdsa$d@#S",
+      "role": "EMPLOYEE"
+    }
+  ],
   "courses": [
     {
       "id": "abc123",
