@@ -33,6 +33,13 @@ const routes: Routes = [
       import('./courses/courses.module').then((m) => m.CoursesModule),
   },
   {
+    path: 'counter',
+    loadChildren: () =>
+      import('./clase-16-counter/clase-16-counter.module').then(
+        (m) => m.Clase16CounterModule
+      ),
+  },
+  {
     path: 'enrollments',
     loadChildren: () =>
       import('./enrollments/enrollments.module').then(

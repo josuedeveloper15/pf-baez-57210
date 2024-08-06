@@ -11,11 +11,18 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { CoreModule } from './core/core.module';
 import { ProductsModule } from './features/dashboard/products/products.module';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { rootReducer } from './core/store';
 // import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, CoreModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    CoreModule,
+    StoreModule.forRoot(rootReducer, {}),
+  ],
   providers: [
     provideAnimationsAsync(),
     provideNativeDateAdapter(),
