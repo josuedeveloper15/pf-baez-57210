@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +13,7 @@ import { ProductsModule } from './features/dashboard/products/products.module';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { rootReducer } from './core/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 // import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -21,7 +22,8 @@ import { rootReducer } from './core/store';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    StoreModule.forRoot(rootReducer, {}),
+    StoreModule.forRoot(rootReducer),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [
     provideAnimationsAsync(),

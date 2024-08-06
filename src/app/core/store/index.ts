@@ -1,11 +1,18 @@
 import { ActionReducerMap } from '@ngrx/store';
-import { counterReducer, CounterState } from './counter/counter.reducer';
+import {
+  counterFeatureName,
+  counterReducer,
+  CounterState,
+} from './counter/counter.reducer';
+import { authFeatureName, authReducer, AuthState } from './auth/auth.reducer';
 
 export interface RootState {
-  counter: CounterState;
+  [counterFeatureName]: CounterState;
+  [authFeatureName]: AuthState;
 }
 
 export const rootReducer: ActionReducerMap<RootState> = {
   // Listado de reducers
-  counter: counterReducer,
+  [counterFeatureName]: counterReducer,
+  [authFeatureName]: authReducer,
 };
