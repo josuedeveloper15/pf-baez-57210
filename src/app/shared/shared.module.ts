@@ -12,6 +12,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [ReversePipe, ResaltadoDirective, RepetirDirective],
@@ -24,6 +25,7 @@ import { MatTableModule } from '@angular/material/table';
     // Tambien podemos exportar otros modulos desde aqui...
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
     MatIconModule,
     ReactiveFormsModule,
     MatSidenavModule,

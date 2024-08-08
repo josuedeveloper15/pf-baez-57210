@@ -1,12 +1,39 @@
 <h1>Inscripciones</h1>
 <hr />
 
-@if (isLoading) {
+@if (isLoading$ | async) {
 <p>Cargando....</p>
+} @else { @if(error$ | async) {
+
+<p>Ocurrio un error inesperado!!!</p>
+
 } @else {
+
+<form class="grid formgrid">
+  <div class="col-6">
+    <mat-form-field class="w-full">
+      <mat-select placeholder="Selecciona un student">
+        @for (student of students$ | async; track $index) {
+        <mat-option [value]="student.id">{{ student.name }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="col-6">
+    <mat-form-field class="w-full">
+      <mat-select placeholder="Selecciona un producto">
+        @for (product of products$| async; track $index) {
+        <mat-option [value]="product.id"
+          >{{ product.name }} - {{ product.price | currency }}</mat-option
+        >
+        }
+      </mat-select>
+    </mat-form-field>
+  </div>
+</form>
 
 <button (click)="addEnrollment()">+</button>
 
-<pre>{{ enrollments | json }}</pre>
+<pre>{{ enrollments$ | async | json }}</pre>
 
-}
+} }

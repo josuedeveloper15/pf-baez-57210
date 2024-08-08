@@ -1,46 +1,45 @@
-import { Component } from '@angular/core';
-import { EnrollmentsService } from '../../../core/services/enrollments.service';
-import { finalize, Observable, Subject } from 'rxjs';
-import { Enrollment } from './models';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Enrollment, Student } from './models';
 import { NotifierService } from '../../../core/services/notifier.service';
+import { Store } from '@ngrx/store';
+import { RootState } from '../../../core/store';
+import { EnrollmentsActions } from './store/enrollments.actions';
+import {
+  selectEnrollments,
+  selectEnrollmentsError,
+  selectEnrollmentsIsLoading,
+  selectEnrollmentsProducts,
+  selectEnrollmentsStudents,
+} from './store/enrollments.selectors';
+import { Product } from '../products/models';
 
 @Component({
   selector: 'app-enrollments',
   templateUrl: './enrollments.component.html',
   styleUrl: './enrollments.component.scss',
 })
-export class EnrollmentsComponent {
-  isLoading = true;
-  // enrollments$: Observable<Enrollment[]>;
-  enrollments: Enrollment[] = [];
-
-  mySubject$ = new Subject();
-  myObservable$ = new Observable((subscriber) => subscriber.next(1));
-
+export class EnrollmentsComponent implements OnInit {
+  isLoading$: Observable<boolean>;
+  enrollments$: Observable<Enrollment[]>;
+  students$: Observable<Student[]>;
+  products$: Observable<Product[]>;
+  error$: Observable<unknown>;
   constructor(
-    private enrollmentsService: EnrollmentsService,
-    private notifierService: NotifierService
+    private notifierService: NotifierService,
+    private store: Store<RootState>
   ) {
-    this.mySubject$.next(1);
-
-    this.enrollmentsService.getEnrollments().subscribe({
-      next: (v) => (this.enrollments = v),
-      complete: () => (this.isLoading = false),
-    });
-
-    // this.enrollments$ = this.enrollmentsService.getEnrollments().pipe(
-    //   finalize(() => {
-    //     // Cuando el observable ya se completo
-    //     this.isLoading = false;
-    //   })
-    // );
+    this.enrollments$ = this.store.select(selectEnrollments);
+    this.isLoading$ = this.store.select(selectEnrollmentsIsLoading);
+    this.error$ = this.store.select(selectEnrollmentsError);
+    this.students$ = this.store.select(selectEnrollmentsStudents);
+    this.products$ = this.store.select(selectEnrollmentsProducts);
   }
-
+  ngOnInit(): void {
+    this.store.dispatch(EnrollmentsActions.loadEnrollments());
+    this.store.dispatch(EnrollmentsActions.loadStudentsAndProducts());
+  }
   addEnrollment(): void {
-    this.enrollmentsService.addEnrollment().subscribe({
-      next: (v) => (this.enrollments = v),
-    });
-
     this.notifierService.sendNotification('Se agrego una inscripcion!');
   }
 }

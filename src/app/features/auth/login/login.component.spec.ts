@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoginComponent } from './login.component';
-import { APP_CONFIG } from '../../../core/injection-tokens';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -31,16 +30,7 @@ describe('LoginComponent', () => {
         MatButtonModule,
         ReactiveFormsModule,
       ],
-      providers: [
-        provideAnimationsAsync(),
-        {
-          provide: APP_CONFIG,
-          useValue: {
-            baseURL: '...',
-            version: '2.0',
-          },
-        },
-      ],
+      providers: [provideAnimationsAsync()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(LoginComponent);

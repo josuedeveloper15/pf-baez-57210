@@ -14,6 +14,7 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { rootReducer } from './core/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
 // import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -24,6 +25,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     CoreModule,
     StoreModule.forRoot(rootReducer),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    EffectsModule.forRoot([]),
   ],
   providers: [
     provideAnimationsAsync(),

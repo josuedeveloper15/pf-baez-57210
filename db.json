@@ -39,14 +39,25 @@
   "products": [
     {
       "name": "test",
-      "price": "test",
+      "price": 5000,
       "id": "f459"
     },
     {
       "name": "test",
-      "price": "test",
+      "price": 3000,
       "id": "fc6f"
     }
   ],
-  "students": []
+  "students": [
+    {
+      "id": "54j9",
+      "name": "Pedro"
+    }
+  ],
+  "sales": [
+    {
+      "productId": "f459",
+      "studentId": "54j9"
+    }
+  ]
 }

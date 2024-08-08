@@ -28,14 +28,6 @@ import { APP_CONFIG } from '../../core/injection-tokens';
     MatButtonModule,
     ReactiveFormsModule,
   ],
-  providers: [
-    {
-      provide: APP_CONFIG,
-      useValue: {
-        baseURL: '...',
-        version: '2.0',
-      },
-    },
-  ],
+  providers: [],
 })
 export class AuthModule {}
