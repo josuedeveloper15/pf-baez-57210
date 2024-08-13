@@ -47,6 +47,11 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'students',
+    loadChildren: () =>
+      import('./students/students.module').then((m) => m.StudentsModule),
+  },
+  {
     path: '**', // Cualquier ruta que no coincida con las anteriores (basicmanete es un default)
     redirectTo: '/dashboard/home',
   },

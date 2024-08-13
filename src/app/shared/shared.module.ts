@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [ReversePipe, ResaltadoDirective, RepetirDirective],
@@ -32,6 +33,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatToolbarModule,
     MatButtonModule,
     MatCardModule,
+    MatListModule,
     MatTableModule,
   ],
 })

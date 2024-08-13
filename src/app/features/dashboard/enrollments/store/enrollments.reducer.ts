@@ -37,6 +37,7 @@ export const reducer = createReducer(
       ...state,
       isLoading: false,
       enrollments: action.data,
+      error: null,
     };
   }),
 
@@ -57,6 +58,7 @@ export const reducer = createReducer(
     isLoadingStudentsAndProducts: false,
     products: action.data.products,
     students: action.data.students,
+    error: null,
   })),
 
   // Create Enrollment
@@ -64,6 +66,7 @@ export const reducer = createReducer(
     return {
       ...state,
       enrollments: [...state.enrollments, action.data],
+      error: null,
     };
   })
 );

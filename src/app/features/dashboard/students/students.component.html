@@ -1,0 +1,18 @@
+@if (isLoading$ | async) {
+<p>Cargando....</p>
+} @else {
+<!-- TERMINO DE CARGAR -->
+
+@if (error$ | async) {
+<p>Ocurrio un error!!</p>
+<button (click)="reloadPage()">Recargar</button>
+} @else {
+<mat-list role="list">
+  <mat-list-item *ngFor="let student of students$ | async" role="listitem">
+    {{ student.name }}
+    <button (click)="deleteStudent(student.id)" mat-icon-button color="warn">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-list-item>
+</mat-list>
+} }
