@@ -57,6 +57,22 @@
   "sales": [
     {
       "productId": "f459",
+      "studentId": "54j9",
+      "id": "2c92"
+    },
+    {
+      "id": "5bd6",
+      "productId": "fc6f",
+      "studentId": "54j9"
+    },
+    {
+      "id": "89ac",
+      "productId": "fc6f",
+      "studentId": "54j9"
+    },
+    {
+      "id": "f83d",
+      "productId": "fc6f",
       "studentId": "54j9"
     }
   ]

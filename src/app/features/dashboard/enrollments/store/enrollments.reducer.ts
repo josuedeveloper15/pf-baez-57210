@@ -57,7 +57,15 @@ export const reducer = createReducer(
     isLoadingStudentsAndProducts: false,
     products: action.data.products,
     students: action.data.students,
-  }))
+  })),
+
+  // Create Enrollment
+  on(EnrollmentsActions.createEnrollmentSuccess, (state, action) => {
+    return {
+      ...state,
+      enrollments: [...state.enrollments, action.data],
+    };
+  })
 );
 
 export const enrollmentsFeature = createFeature({

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { delay, forkJoin, Observable, of } from 'rxjs';
+import { concatMap, delay, forkJoin, Observable, of } from 'rxjs';
 import {
+  CreateEnrollmentPayload,
   Enrollment,
   LoadStudentsAndProductsResponse,
   Student,
@@ -30,11 +31,18 @@ export class EnrollmentsService {
     });
   }
 
-  addEnrollment(): Observable<Enrollment[]> {
-    // this.MY_DATABASE.push({
-    //   studentId: 'caS3',
-    //   courseId: 'fjd32',
-    // });
-    return this.getEnrollments();
+  addEnrollment(payload: CreateEnrollmentPayload): Observable<Enrollment> {
+    return this.http
+      .post<Enrollment>(environment.apiUrl + '/sales', payload)
+      .pipe(
+        concatMap((enrollmentCreated) =>
+          this.http.get<Enrollment>(
+            environment.apiUrl +
+              '/sales/' +
+              enrollmentCreated.id +
+              '?_embed=product&_embed=student'
+          )
+        )
+      );
   }
 }

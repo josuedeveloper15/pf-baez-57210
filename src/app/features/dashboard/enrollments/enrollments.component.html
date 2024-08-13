@@ -9,10 +9,13 @@
 
 } @else {
 
-<form class="grid formgrid">
+<form [formGroup]="enrollmentForm" class="grid formgrid">
   <div class="col-6">
     <mat-form-field class="w-full">
-      <mat-select placeholder="Selecciona un student">
+      <mat-select
+        formControlName="studentId"
+        placeholder="Selecciona un student"
+      >
         @for (student of students$ | async; track $index) {
         <mat-option [value]="student.id">{{ student.name }}</mat-option>
         }
@@ -21,7 +24,10 @@
   </div>
   <div class="col-6">
     <mat-form-field class="w-full">
-      <mat-select placeholder="Selecciona un producto">
+      <mat-select
+        formControlName="productId"
+        placeholder="Selecciona un producto"
+      >
         @for (product of products$| async; track $index) {
         <mat-option [value]="product.id"
           >{{ product.name }} - {{ product.price | currency }}</mat-option

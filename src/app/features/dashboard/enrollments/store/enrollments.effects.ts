@@ -7,6 +7,20 @@ import { EnrollmentsService } from '../../../../core/services/enrollments.servic
 
 @Injectable()
 export class EnrollmentsEffects {
+  createEnrollment$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(EnrollmentsActions.createEnrollment),
+      concatMap((action) =>
+        this.enrollmentsService.addEnrollment(action.payload).pipe(
+          map((data) => EnrollmentsActions.createEnrollmentSuccess({ data })),
+          catchError((error) =>
+            of(EnrollmentsActions.createEnrollmentFailure({ error }))
+          )
+        )
+      )
+    );
+  });
+
   loadEnrollments$ = createEffect(() => {
     return this.actions$.pipe(
       // Filtramos de todas las acciones solo, las que son de tipo EnrollmentsActions.loadEnrollments
